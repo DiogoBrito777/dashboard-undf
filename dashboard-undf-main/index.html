@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Institucional - UnDF</title>
+    <!-- ESTA É A LINHA CRÍTICA QUE CARREGA O VISUAL -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Cabeçalho Principal com a Logo e Contadores -->
+        <header class="main-header">
+            <div class="header-brand">
+                <img src="logo_undf.png" alt="Logo da Universidade do Distrito Federal (UnDF)" class="logo-img">
+                <div class="brand-text">
+                    <h1>Painel Institucional</h1>
+                    <p>Laboratório de Inovação Digital</p>
+                </div>
+            </div>
+            
+            <!-- Visão geral em menos de 10 segundos -->
+            <div class="summary-cards">
+                <div class="card-summary">
+                    <span class="summary-label">Projetos Ativos</span>
+                    <strong id="count-projetos-ativos">0</strong>
+                </div>
+                <div class="card-summary">
+                    <span class="summary-label">Total de Inscrições</span>
+                    <strong id="count-inscricoes">0</strong>
+                </div>
+            </div>
+
+            <button id="theme-toggle" class="btn-theme" aria-label="Alternar tema escuro">🌓</button>
+        </header>
+
+        <!-- Seção de Controles e Filtros -->
+        <section class="controls-section">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar projeto por nome...">
+            </div>
+            <div class="filters-box">
+                <select id="filter-area">
+                    <option value="">Todas as Áreas Temáticas</option>
+                    <option value="Ciência da Computação">Ciência da Computação</option>
+                    <option value="Engenharia de Software">Engenharia de Software</option>
+                    <option value="Sistemas de Informação">Sistemas de Informação</option>
+                    <option value="Administração">Administração</option>
+                    <option value="Pedagogia">Pedagogia</option>
+                </select>
+
+                <select id="filter-status">
+                    <option value="">Todos os Status</option>
+                    <option value="com vagas">Com Vagas</option>
+                    <option value="vagas esgotadas">Vagas Esgotadas</option>
+                    <option value="projeto encerrado">Projeto Encerrado</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Corpo Principal do Dashboard (Layout de Duas Colunas) -->
+        <main class="dashboard-content">
+            
+            <!-- Coluna 1: Lista de Projetos -->
+            <section class="projects-column">
+                <h2>Projetos de Pesquisa e Extensão</h2>
+                
+                <div id="projects-container">
+                    <!-- Estado de Carregamento Inicial (Skeleton) -->
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </section>
+
+            <!-- Coluna 2: Detalhes do Projeto Selecionado -->
+            <section class="details-column" id="details-section">
+                <h2>Inscrições Recebidas</h2>
+                <div id="details-container">
+                    <p class="placeholder-text">Selecione um projeto ao lado para visualizar os candidatos inscritos.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Script que a equipe da Etapa 2 vai usar -->
+    <script src="script.js"></script>
+</body>
+</html>

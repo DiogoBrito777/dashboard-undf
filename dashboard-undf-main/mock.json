@@ -1,0 +1,106 @@
+{
+  "projetos": [
+    {
+      "id": 1,
+      "nome": "Laboratório de Inovação Digital da UnDF",
+      "area_tematica": "Ciência da Computação",
+      "vagas_totais": 10,
+      "inscricoes_recebidas": 3,
+      "status": "com vagas"
+    },
+    {
+      "id": 2,
+      "nome": "Fábrica de Software Institucional",
+      "area_tematica": "Ciência da Computação",
+      "vagas_totais": 5,
+      "inscricoes_recebidas": 5,
+      "status": "vagas esgotadas"
+    },
+    {
+      "id": 3,
+      "nome": "Inclusão Digital na Terceira Idade",
+      "area_tematica": "Engenharia de Software",
+      "vagas_totais": 8,
+      "inscricoes_recebidas": 0,
+      "status": "com vagas"
+    },
+    {
+      "id": 4,
+      "nome": "Robótica Educacional nas Escolas Públicas",
+      "area_tematica": "Ciência da Computação",
+      "vagas_totais": 6,
+      "inscricoes_recebidas": 6,
+      "status": "projeto encerrado"
+    },
+    {
+      "id": 5,
+      "nome": "Análise de Dados de Saúde Pública do DF",
+      "area_tematica": "Sistemas de Informação",
+      "vagas_totais": 12,
+      "inscricoes_recebidas": 4,
+      "status": "com vagas"
+    },
+    {
+      "id": 6,
+      "nome": "Observatório de Gestão Pública",
+      "area_tematica": "Administração",
+      "vagas_totais": 4,
+      "inscricoes_recebidas": 2,
+      "status": "com vagas"
+    },
+    {
+      "id": 7,
+      "nome": "Cibersegurança na Infraestrutura do Distrito Federal",
+      "area_tematica": "Ciência da Computação",
+      "vagas_totais": 5,
+      "inscricoes_recebidas": 0,
+      "status": "com vagas"
+    },
+    {
+      "id": 8,
+      "nome": "Práticas de Mediação Pedagógica Online",
+      "area_tematica": "Pedagogia",
+      "vagas_totais": 15,
+      "inscricoes_recebidas": 15,
+      "status": "vagas esgotadas"
+    },
+    {
+      "id": 9,
+      "nome": "Mapeamento Satélite de Áreas de Risco",
+      "area_tematica": "Sistemas de Informação",
+      "vagas_totais": 7,
+      "inscricoes_recebidas": 0,
+      "status": "projeto encerrado"
+    },
+    {
+      "id": 10,
+      "nome": "Apoio Psicopedagógico no Ensino Superior",
+      "area_tematica": "Pedagogia",
+      "vagas_totais": 10,
+      "inscricoes_recebidas": 2,
+      "status": "com vagas"
+    }
+  ],
+  "inscricoes": [
+    { "id": 1, "projeto_id": 1, "nome_estudante": "Ana Silva", "email": "ana.silva@estudante.undf.edu.br", "telefone": "61999991111", "curso": "Ciência da Computação", "turno": "Matutino", "data_cadastro": "2026-03-01" },
+    { "id": 2, "projeto_id": 1, "nome_estudante": "Bruno Costa", "email": "bruno.costa@estudante.undf.edu.br", "telefone": "61999992222", "curso": "Ciência da Computação", "turno": "Noturno", "data_cadastro": "2026-03-02" },
+    { "id": 3, "projeto_id": 1, "nome_estudante": "Carlos Oliveira", "email": "carlos.o@estudante.undf.edu.br", "telefone": "61999993333", "curso": "Engenharia de Software", "turno": "Matutino", "data_cadastro": "2026-03-03" },
+    { "id": 4, "projeto_id": 2, "nome_estudante": "Daniela Lima", "email": "daniela.l@estudante.undf.edu.br", "telefone": "61999994444", "curso": "Sistemas de Informação", "turno": "Vespertino", "data_cadastro": "2026-03-01" },
+    { "id": 5, "projeto_id": 2, "nome_estudante": "Eduardo Santos", "email": "eduardo.s@estudante.undf.edu.br", "telefone": "61999995555", "curso": "Ciência da Computação", "turno": "Noturno", "data_cadastro": "2026-03-02" },
+    { "id": 6, "projeto_id": 2, "nome_estudante": "Fernanda Ribeiro", "email": "fernanda.r@estudante.undf.edu.br", "telefone": "61999996666", "curso": "Ciência da Computação", "turno": "Matutino", "data_cadastro": "2026-03-03" },
+    { "id": 7, "projeto_id": 2, "nome_estudante": "Gabriel Souza", "email": "gabriel.s@estudante.undf.edu.br", "telefone": "61999997777", "curso": "Sistemas de Informação", "turno": "Noturno", "data_cadastro": "2026-03-04" },
+    { "id": 8, "projeto_id": 2, "nome_estudante": "Helena Gomes", "email": "helena.g@estudante.undf.edu.br", "telefone": "61999998888", "curso": "Engenharia de Software", "turno": "Vespertino", "data_cadastro": "2026-03-05" },
+    { "id": 9, "projeto_id": 5, "nome_estudante": "Igor Martins", "email": "igor.m@estudante.undf.edu.br", "telefone": "61999999999", "curso": "Sistemas de Informação", "turno": "Matutino", "data_cadastro": "2026-03-02" },
+    { "id": 10, "projeto_id": 5, "nome_estudante": "Julia Carvalho", "email": "julia.c@estudante.undf.edu.br", "telefone": "61988881111", "curso": "Ciência da Computação", "turno": "Noturno", "data_cadastro": "2026-03-03" },
+    { "id": 11, "projeto_id": 5, "nome_estudante": "Kevin Rocha", "email": "kevin.r@estudante.undf.edu.br", "telefone": "61988882222", "curso": "Sistemas de Informação", "turno": "Vespertino", "data_cadastro": "2026-03-04" },
+    { "id": 12, "projeto_id": 5, "nome_estudante": "Larissa Melo", "email": "larissa.m@estudante.undf.edu.br", "telefone": "61988883333", "curso": "Administração", "turno": "Matutino", "data_cadastro": "2026-03-05" },
+    { "id": 13, "projeto_id": 6, "nome_estudante": "Murilo Peixoto", "email": "murilo.p@estudante.undf.edu.br", "telefone": "61988884444", "curso": "Administração", "turno": "Noturno", "data_cadastro": "2026-03-04" },
+    { "id": 14, "projeto_id": 6, "nome_estudante": "Natalia Cruz", "email": "natalia.c@estudante.undf.edu.br", "telefone": "61988885555", "curso": "Administração", "turno": "Matutino", "data_cadastro": "2026-03-05" },
+    { "id": 15, "projeto_id": 8, "nome_estudante": "Otavio Reis", "email": "otavio.r@estudante.undf.edu.br", "telefone": "61988886666", "curso": "Pedagogia", "turno": "Matutino", "data_cadastro": "2026-03-01" },
+    { "id": 16, "projeto_id": 8, "nome_estudante": "Patricia Dias", "email": "patricia.d@estudante.undf.edu.br", "telefone": "61988887777", "curso": "Pedagogia", "turno": "Vespertino", "data_cadastro": "2026-03-01" },
+    { "id": 17, "projeto_id": 8, "nome_estudante": "Ricardo Alves", "email": "ricardo.a@estudante.undf.edu.br", "telefone": "61988888888", "turn": "Noturno", "curso": "Pedagogia", "turno": "Noturno", "data_cadastro": "2026-03-02" },
+    { "id": 18, "projeto_id": 8, "nome_estudante": "Sabrina Nunes", "email": "sabrina.n@estudante.undf.edu.br", "telefone": "61988889999", "curso": "Pedagogia", "turno": "Matutino", "data_cadastro": "2026-03-02" },
+    { "id": 19, "projeto_id": 10, "nome_estudante": "Tiago Franco", "email": "tiago.f@estudante.undf.edu.br", "telefone": "61977771111", "curso": "Pedagogia", "turno": "Vespertino", "data_cadastro": "2026-03-06" },
+    { "id": 20, "projeto_id": 10, "nome_estudante": "Vanessa Lins", "email": "vanessa.l@estudante.undf.edu.br", "telefone": "61977772222", "curso": "Administração", "turno": "Noturno", "data_cadastro": "2026-03-06" }
+  ]
+}
