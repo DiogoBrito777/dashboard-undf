@@ -3,89 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Institucional - UnDF</title>
-    <!-- ESTA É A LINHA CRÍTICA QUE CARREGA O VISUAL -->
+    <title>UniProjetos Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="dashboard-container">
-        <!-- Cabeçalho Principal com a Logo e Contadores -->
-        <header class="main-header">
-            <div class="header-brand">
-                <img src="logo_undf.png" alt="Logo da Universidade do Distrito Federal (UnDF)" class="logo-img">
-                <div class="brand-text">
-                    <h1>Painel Institucional</h1>
-                    <p>Laboratório de Inovação Digital</p>
-                </div>
+    <!-- CABEÇALHO -->
+    <header class="header">
+        <div class="logo">
+            <img src="logo_undf.png" alt="Logo UnDF" class="logo-img">
+            <h1>UniProjetos Dashboard</h1>
+        </div>
+        <button id="themeToggle" class="theme-toggle">🌙 Modo Escuro</button>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="dashboard-container">
+        
+        <!-- CARDS SUPERIORES -->
+        <section class="stats-grid">
+            
+            <!-- VAGAS DISPONÍVEIS -->
+            <div class="card stat-card">
+                <h3>VAGAS DISPONÍVEIS</h3>
+                <div class="stat-value">145</div>
+                <p class="stat-subtitle">em <strong>42</strong> projetos cadastrados</p>
             </div>
             
-            <!-- Visão geral em menos de 10 segundos -->
-            <div class="summary-cards">
-                <div class="card-summary">
-                    <span class="summary-label">Projetos Ativos</span>
-                    <strong id="count-projetos-ativos">0</strong>
+            <!-- TOTAL INSCRIÇÕES -->
+            <div class="card stat-card">
+                <h3>TOTAL INSCRIÇÕES</h3>
+                <div class="stat-value">565</div>
+                <p class="stat-trend trend-up">↗ +12% esta semana</p>
+            </div>
+
+            <!-- TAXA DE OCUPAÇÃO (LADO A LADO) -->
+            <div class="card stat-card occupation-card-split">
+                <div class="occupation-info-left">
+                    <h3>TAXA DE OCUPAÇÃO</h3>
+                    <div class="occupation-numbers">
+                        <div class="big-number">565 <span class="small-label">ocupadas</span></div>
+                        <div class="big-number secondary">145 <span class="small-label">livres</span></div>
+                    </div>
                 </div>
-                <div class="card-summary">
-                    <span class="summary-label">Total de Inscrições</span>
-                    <strong id="count-inscricoes">0</strong>
+                <div class="circle-chart-placeholder">
+                    <span>80%</span>
                 </div>
             </div>
 
-            <button id="theme-toggle" class="btn-theme" aria-label="Alternar tema escuro">🌓</button>
-        </header>
+        </section>
 
-        <!-- Seção de Controles e Filtros -->
+        <!-- BARRA DE PESQUISA E FILTROS -->
         <section class="controls-section">
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="Buscar projeto por nome...">
-            </div>
-            <div class="filters-box">
-                <select id="filter-area">
-                    <option value="">Todas as Áreas Temáticas</option>
-                    <option value="Ciência da Computação">Ciência da Computação</option>
-                    <option value="Engenharia de Software">Engenharia de Software</option>
-                    <option value="Sistemas de Informação">Sistemas de Informação</option>
-                    <option value="Administração">Administração</option>
-                    <option value="Pedagogia">Pedagogia</option>
+            <input type="search" placeholder="Buscar projetos..." class="search-bar">
+            <div class="filters">
+                <select class="filter-select">
+                    <option value="todas">Todas as Áreas</option>
+                    <option value="engenharia">Engenharia</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="ciencias-vida">Ciências da Vida</option>
                 </select>
-
-                <select id="filter-status">
-                    <option value="">Todos os Status</option>
-                    <option value="com vagas">Com Vagas</option>
-                    <option value="vagas esgotadas">Vagas Esgotadas</option>
-                    <option value="projeto encerrado">Projeto Encerrado</option>
+                <select class="filter-select">
+                    <option value="todos">Todos os Status</option>
+                    <option value="com-vagas">Com Vagas</option>
+                    <option value="esgotado">Esgotado</option>
                 </select>
             </div>
         </section>
 
-        <!-- Corpo Principal do Dashboard (Layout de Duas Colunas) -->
-        <main class="dashboard-content">
+        <!-- TABELA E GRÁFICO DE PIZZA -->
+        <section class="main-content-grid">
             
-            <!-- Coluna 1: Lista de Projetos -->
-            <section class="projects-column">
-                <h2>Projetos de Pesquisa e Extensão</h2>
-                
-                <div id="projects-container">
-                    <!-- Estado de Carregamento Inicial (Skeleton) -->
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
+            <!-- TABELA DE PROJETOS -->
+            <div class="card table-card">
+                <h2>Projetos</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>NOME DO PROJETO <span class="sort-icon">↑</span></th>
+                                <th>ÁREA TEMÁTICA <span class="sort-icon">↕</span></th>
+                                <th>STATUS <span class="sort-icon">↕</span></th>
+                                <th>VAGAS <span class="sort-icon">↕</span></th>
+                                <th>INSCRITOS <span class="sort-icon">↕</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="clickable-row">
+                                <td>Biossíntese de Compostos...</td>
+                                <td>Ciências da Vida</td>
+                                <td><span class="badge badge-green">Com Vagas</span></td>
+                                <td>6</td>
+                                <td>1</td>
+                            </tr>
+                            <tr class="clickable-row">
+                                <td>Computação Quântica...</td>
+                                <td>Tecnologia</td>
+                                <td><span class="badge badge-yellow">Esgotado</span></td>
+                                <td>2</td>
+                                <td>8</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </section>
+            </div>
 
-            <!-- Coluna 2: Detalhes do Projeto Selecionado -->
-            <section class="details-column" id="details-section">
-                <h2>Inscrições Recebidas</h2>
-                <div id="details-container">
-                    <p class="placeholder-text">Selecione um projeto ao lado para visualizar os candidatos inscritos.</p>
+            <!-- GRÁFICO POR ÁREA -->
+            <div class="card chart-card">
+                <h2>Vagas por Área Temática</h2>
+                <div class="pie-chart-placeholder">
+                    <p style="color: var(--text-secondary); text-align: center; margin-top: 50px;">
+                        [ Gráfico JS entrará aqui ]
+                    </p>
                 </div>
-            </section>
+            </div>
 
-        </main>
+        </section>
+    </main>
+
+    <!-- MODAL DE DETALHES -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <button class="close-modal">✕</button>
+            
+            <div class="modal-header">
+                <span class="badge badge-green">Com Vagas</span>
+                <span class="modal-area">⚗️ Ciências da Vida</span>
+                <h2 class="modal-title">Biossíntese de Compostos Antimicrobianos</h2>
+                <p class="modal-description">Isolamento e caracterização de metabólitos secundários produzidos por actinobactérias do solo da Mata Atlântica com atividade contra bactérias resistentes.</p>
+            </div>
+
+            <div class="modal-mini-cards">
+                <div class="mini-card">
+                    <div class="mini-value text-blue">6</div>
+                    <div class="mini-label">Vagas</div>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-value text-purple">1</div>
+                    <div class="mini-label">Inscritos</div>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-value text-green">5</div>
+                    <div class="mini-label">Disponíveis</div>
+                </div>
+            </div>
+
+            <div class="modal-progress">
+                <div class="progress-header">
+                    <span>Taxa de ocupação</span>
+                    <span>17%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 17%;"></div>
+                </div>
+            </div>
+
+            <div class="modal-students">
+                <div class="modal-students-header">
+                    <h3>👥 Alunos Inscritos</h3>
+                    <span class="students-count">1 alunos</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>NOME</th>
+                                <th>E-MAIL</th>
+                                <th>TELEFONE</th>
+                                <th>CURSO</th>
+                                <th>TURNO</th>
+                                <th>CADASTRO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Renata Souza</td>
+                                <td>r.souza@uni.edu.br</td>
+                                <td>(61) 97234-5671</td>
+                                <td>Economia</td>
+                                <td><span class="badge badge-yellow">Matutino</span></td>
+                                <td>03/01/2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Script que a equipe da Etapa 2 vai usar -->
-    <script src="script.js"></script>
+    <!-- SCRIPT DE TEMA PARA TESTE IMEDIATO -->
+    <script>
+        const btnTheme = document.getElementById('themeToggle');
+        btnTheme.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            btnTheme.textContent = isDark ? '🌙 Modo Escuro' : '☀️ Modo Claro';
+        });
+    </script>
 </body>
 </html>

@@ -1,106 +1,278 @@
 {
+  "dashboard": {
+    "vagasDisponiveis": 45,
+    "projetosCadastrados": 10,
+    "totalInscricoes": 37,
+    "taxaOcupacao": 45,
+    "vagasOcupadas": 37,
+    "vagasLivres": 45
+  },
   "projetos": [
     {
       "id": 1,
       "nome": "Laboratório de Inovação Digital da UnDF",
-      "area_tematica": "Ciência da Computação",
-      "vagas_totais": 10,
-      "inscricoes_recebidas": 3,
-      "status": "com vagas"
+      "areaTematica": "Ciência da Computação",
+      "status": "Com Vagas",
+      "vagas": 10,
+      "inscritos": 3,
+      "descricao": "Projeto de fomento à inovação tecnológica e práticas avançadas em ambientes digitais.",
+      "alunos": [
+        {
+          "nome": "Ana Silva",
+          "email": "ana.silva@estudante.undf.edu.br",
+          "telefone": "(61) 99999-1111",
+          "curso": "Ciência da Computação",
+          "turno": "Matutino",
+          "dataCadastro": "01/03/2026"
+        },
+        {
+          "nome": "Bruno Costa",
+          "email": "bruno.costa@estudante.undf.edu.br",
+          "telefone": "(61) 99999-2222",
+          "curso": "Ciência da Computação",
+          "turno": "Noturno",
+          "dataCadastro": "02/03/2026"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "email": "carlos.o@estudante.undf.edu.br",
+          "telefone": "(61) 99999-3333",
+          "curso": "Engenharia de Software",
+          "turno": "Matutino",
+          "dataCadastro": "03/03/2026"
+        }
+      ]
     },
     {
       "id": 2,
       "nome": "Fábrica de Software Institucional",
-      "area_tematica": "Ciência da Computação",
-      "vagas_totais": 5,
-      "inscricoes_recebidas": 5,
-      "status": "vagas esgotadas"
+      "areaTematica": "Ciência da Computação",
+      "status": "Esgotado",
+      "vagas": 5,
+      "inscritos": 5,
+      "descricao": "Desenvolvimento de soluções em software e sistemas de informação para demandas internas e parceiros.",
+      "alunos": [
+        {
+          "nome": "Daniela Lima",
+          "email": "daniela.l@estudante.undf.edu.br",
+          "telefone": "(61) 99999-4444",
+          "curso": "Sistemas de Informação",
+          "turno": "Vespertino",
+          "dataCadastro": "01/03/2026"
+        },
+        {
+          "nome": "Eduardo Santos",
+          "email": "eduardo.s@estudante.undf.edu.br",
+          "telefone": "(61) 99999-5555",
+          "curso": "Ciência da Computação",
+          "turno": "Noturno",
+          "dataCadastro": "02/03/2026"
+        },
+        {
+          "nome": "Fernanda Ribeiro",
+          "email": "fernanda.r@estudante.undf.edu.br",
+          "telefone": "(61) 99999-6666",
+          "curso": "Ciência da Computação",
+          "turno": "Matutino",
+          "dataCadastro": "03/03/2026"
+        },
+        {
+          "nome": "Gabriel Souza",
+          "email": "gabriel.s@estudante.undf.edu.br",
+          "telefone": "(61) 99999-7777",
+          "curso": "Sistemas de Informação",
+          "turno": "Noturno",
+          "dataCadastro": "04/03/2026"
+        },
+        {
+          "nome": "Helena Gomes",
+          "email": "helena.g@estudante.undf.edu.br",
+          "telefone": "(61) 99999-8888",
+          "curso": "Engenharia de Software",
+          "turno": "Vespertino",
+          "dataCadastro": "05/03/2026"
+        }
+      ]
     },
     {
       "id": 3,
       "nome": "Inclusão Digital na Terceira Idade",
-      "area_tematica": "Engenharia de Software",
-      "vagas_totais": 8,
-      "inscricoes_recebidas": 0,
-      "status": "com vagas"
+      "areaTematica": "Engenharia de Software",
+      "status": "Com Vagas",
+      "vagas": 8,
+      "inscritos": 0,
+      "descricao": "Capacitação tecnológica para idosos, focando no desenvolvimento de interfaces amigáveis.",
+      "alunos": []
     },
     {
       "id": 4,
       "nome": "Robótica Educacional nas Escolas Públicas",
-      "area_tematica": "Ciência da Computação",
-      "vagas_totais": 6,
-      "inscricoes_recebidas": 6,
-      "status": "projeto encerrado"
+      "areaTematica": "Ciência da Computação",
+      "status": "Encerrado",
+      "vagas": 6,
+      "inscritos": 6,
+      "descricao": "Oficinas de introdução à robótica e pensamento lógico voltadas para estudantes da rede pública.",
+      "alunos": []
     },
     {
       "id": 5,
       "nome": "Análise de Dados de Saúde Pública do DF",
-      "area_tematica": "Sistemas de Informação",
-      "vagas_totais": 12,
-      "inscricoes_recebidas": 4,
-      "status": "com vagas"
+      "areaTematica": "Sistemas de Informação",
+      "status": "Com Vagas",
+      "vagas": 12,
+      "inscritos": 4,
+      "descricao": "Uso de Data Science para mapear e propor otimizações no sistema de saúde do Distrito Federal.",
+      "alunos": [
+        {
+          "nome": "Igor Martins",
+          "email": "igor.m@estudante.undf.edu.br",
+          "telefone": "(61) 99999-9999",
+          "curso": "Sistemas de Informação",
+          "turno": "Matutino",
+          "dataCadastro": "02/03/2026"
+        },
+        {
+          "nome": "Julia Carvalho",
+          "email": "julia.c@estudante.undf.edu.br",
+          "telefone": "(61) 98888-1111",
+          "curso": "Ciência da Computação",
+          "turno": "Noturno",
+          "dataCadastro": "03/03/2026"
+        },
+        {
+          "nome": "Kevin Rocha",
+          "email": "kevin.r@estudante.undf.edu.br",
+          "telefone": "(61) 98888-2222",
+          "curso": "Sistemas de Informação",
+          "turno": "Vespertino",
+          "dataCadastro": "04/03/2026"
+        },
+        {
+          "nome": "Larissa Melo",
+          "email": "larissa.m@estudante.undf.edu.br",
+          "telefone": "(61) 98888-3333",
+          "curso": "Administração",
+          "turno": "Matutino",
+          "dataCadastro": "05/03/2026"
+        }
+      ]
     },
     {
       "id": 6,
       "nome": "Observatório de Gestão Pública",
-      "area_tematica": "Administração",
-      "vagas_totais": 4,
-      "inscricoes_recebidas": 2,
-      "status": "com vagas"
+      "areaTematica": "Administração",
+      "status": "Com Vagas",
+      "vagas": 4,
+      "inscritos": 2,
+      "descricao": "Monitoramento de políticas públicas e aplicação de conceitos de transparência e eficiência administrativa.",
+      "alunos": [
+        {
+          "nome": "Murilo Peixoto",
+          "email": "murilo.p@estudante.undf.edu.br",
+          "telefone": "(61) 98888-4444",
+          "curso": "Administração",
+          "turno": "Noturno",
+          "dataCadastro": "04/03/2026"
+        },
+        {
+          "nome": "Natalia Cruz",
+          "email": "natalia.c@estudante.undf.edu.br",
+          "telefone": "(61) 98888-5555",
+          "curso": "Administração",
+          "turno": "Matutino",
+          "dataCadastro": "05/03/2026"
+        }
+      ]
     },
     {
       "id": 7,
       "nome": "Cibersegurança na Infraestrutura do Distrito Federal",
-      "area_tematica": "Ciência da Computação",
-      "vagas_totais": 5,
-      "inscricoes_recebidas": 0,
-      "status": "com vagas"
+      "areaTematica": "Ciência da Computação",
+      "status": "Com Vagas",
+      "vagas": 5,
+      "inscritos": 0,
+      "descricao": "Pesquisa e implementação de protocolos de segurança em redes e servidores críticos.",
+      "alunos": []
     },
     {
       "id": 8,
       "nome": "Práticas de Mediação Pedagógica Online",
-      "area_tematica": "Pedagogia",
-      "vagas_totais": 15,
-      "inscricoes_recebidas": 15,
-      "status": "vagas esgotadas"
+      "areaTematica": "Pedagogia",
+      "status": "Esgotado",
+      "vagas": 15,
+      "inscritos": 15,
+      "descricao": "Estudo de novos modelos de ensino a distância e técnicas de engajamento virtual de alunos.",
+      "alunos": [
+        {
+          "nome": "Otavio Reis",
+          "email": "otavio.r@estudante.undf.edu.br",
+          "telefone": "(61) 98888-6666",
+          "curso": "Pedagogia",
+          "turno": "Matutino",
+          "dataCadastro": "01/03/2026"
+        },
+        {
+          "nome": "Patricia Dias",
+          "email": "patricia.d@estudante.undf.edu.br",
+          "telefone": "(61) 98888-7777",
+          "curso": "Pedagogia",
+          "turno": "Vespertino",
+          "dataCadastro": "01/03/2026"
+        },
+        {
+          "nome": "Ricardo Alves",
+          "email": "ricardo.a@estudante.undf.edu.br",
+          "telefone": "(61) 98888-8888",
+          "curso": "Pedagogia",
+          "turno": "Noturno",
+          "dataCadastro": "02/03/2026"
+        },
+        {
+          "nome": "Sabrina Nunes",
+          "email": "sabrina.n@estudante.undf.edu.br",
+          "telefone": "(61) 98888-9999",
+          "curso": "Pedagogia",
+          "turno": "Matutino",
+          "dataCadastro": "02/03/2026"
+        }
+      ]
     },
     {
       "id": 9,
       "nome": "Mapeamento Satélite de Áreas de Risco",
-      "area_tematica": "Sistemas de Informação",
-      "vagas_totais": 7,
-      "inscricoes_recebidas": 0,
-      "status": "projeto encerrado"
+      "areaTematica": "Sistemas de Informação",
+      "status": "Encerrado",
+      "vagas": 7,
+      "inscritos": 0,
+      "descricao": "Utilização de geoprocessamento para analisar áreas de vulnerabilidade social e ambiental.",
+      "alunos": []
     },
     {
       "id": 10,
       "nome": "Apoio Psicopedagógico no Ensino Superior",
-      "area_tematica": "Pedagogia",
-      "vagas_totais": 10,
-      "inscricoes_recebidas": 2,
-      "status": "com vagas"
+      "areaTematica": "Pedagogia",
+      "status": "Com Vagas",
+      "vagas": 10,
+      "inscritos": 2,
+      "descricao": "Desenvolvimento de metodologias de suporte psicológico e educacional para jovens universitários.",
+      "alunos": [
+        {
+          "nome": "Tiago Franco",
+          "email": "tiago.f@estudante.undf.edu.br",
+          "telefone": "(61) 97777-1111",
+          "curso": "Pedagogia",
+          "turno": "Vespertino",
+          "dataCadastro": "06/03/2026"
+        },
+        {
+          "nome": "Vanessa Lins",
+          "email": "vanessa.l@estudante.undf.edu.br",
+          "telefone": "(61) 97777-2222",
+          "curso": "Administração",
+          "turno": "Noturno",
+          "dataCadastro": "06/03/2026"
+        }
+      ]
     }
-  ],
-  "inscricoes": [
-    { "id": 1, "projeto_id": 1, "nome_estudante": "Ana Silva", "email": "ana.silva@estudante.undf.edu.br", "telefone": "61999991111", "curso": "Ciência da Computação", "turno": "Matutino", "data_cadastro": "2026-03-01" },
-    { "id": 2, "projeto_id": 1, "nome_estudante": "Bruno Costa", "email": "bruno.costa@estudante.undf.edu.br", "telefone": "61999992222", "curso": "Ciência da Computação", "turno": "Noturno", "data_cadastro": "2026-03-02" },
-    { "id": 3, "projeto_id": 1, "nome_estudante": "Carlos Oliveira", "email": "carlos.o@estudante.undf.edu.br", "telefone": "61999993333", "curso": "Engenharia de Software", "turno": "Matutino", "data_cadastro": "2026-03-03" },
-    { "id": 4, "projeto_id": 2, "nome_estudante": "Daniela Lima", "email": "daniela.l@estudante.undf.edu.br", "telefone": "61999994444", "curso": "Sistemas de Informação", "turno": "Vespertino", "data_cadastro": "2026-03-01" },
-    { "id": 5, "projeto_id": 2, "nome_estudante": "Eduardo Santos", "email": "eduardo.s@estudante.undf.edu.br", "telefone": "61999995555", "curso": "Ciência da Computação", "turno": "Noturno", "data_cadastro": "2026-03-02" },
-    { "id": 6, "projeto_id": 2, "nome_estudante": "Fernanda Ribeiro", "email": "fernanda.r@estudante.undf.edu.br", "telefone": "61999996666", "curso": "Ciência da Computação", "turno": "Matutino", "data_cadastro": "2026-03-03" },
-    { "id": 7, "projeto_id": 2, "nome_estudante": "Gabriel Souza", "email": "gabriel.s@estudante.undf.edu.br", "telefone": "61999997777", "curso": "Sistemas de Informação", "turno": "Noturno", "data_cadastro": "2026-03-04" },
-    { "id": 8, "projeto_id": 2, "nome_estudante": "Helena Gomes", "email": "helena.g@estudante.undf.edu.br", "telefone": "61999998888", "curso": "Engenharia de Software", "turno": "Vespertino", "data_cadastro": "2026-03-05" },
-    { "id": 9, "projeto_id": 5, "nome_estudante": "Igor Martins", "email": "igor.m@estudante.undf.edu.br", "telefone": "61999999999", "curso": "Sistemas de Informação", "turno": "Matutino", "data_cadastro": "2026-03-02" },
-    { "id": 10, "projeto_id": 5, "nome_estudante": "Julia Carvalho", "email": "julia.c@estudante.undf.edu.br", "telefone": "61988881111", "curso": "Ciência da Computação", "turno": "Noturno", "data_cadastro": "2026-03-03" },
-    { "id": 11, "projeto_id": 5, "nome_estudante": "Kevin Rocha", "email": "kevin.r@estudante.undf.edu.br", "telefone": "61988882222", "curso": "Sistemas de Informação", "turno": "Vespertino", "data_cadastro": "2026-03-04" },
-    { "id": 12, "projeto_id": 5, "nome_estudante": "Larissa Melo", "email": "larissa.m@estudante.undf.edu.br", "telefone": "61988883333", "curso": "Administração", "turno": "Matutino", "data_cadastro": "2026-03-05" },
-    { "id": 13, "projeto_id": 6, "nome_estudante": "Murilo Peixoto", "email": "murilo.p@estudante.undf.edu.br", "telefone": "61988884444", "curso": "Administração", "turno": "Noturno", "data_cadastro": "2026-03-04" },
-    { "id": 14, "projeto_id": 6, "nome_estudante": "Natalia Cruz", "email": "natalia.c@estudante.undf.edu.br", "telefone": "61988885555", "curso": "Administração", "turno": "Matutino", "data_cadastro": "2026-03-05" },
-    { "id": 15, "projeto_id": 8, "nome_estudante": "Otavio Reis", "email": "otavio.r@estudante.undf.edu.br", "telefone": "61988886666", "curso": "Pedagogia", "turno": "Matutino", "data_cadastro": "2026-03-01" },
-    { "id": 16, "projeto_id": 8, "nome_estudante": "Patricia Dias", "email": "patricia.d@estudante.undf.edu.br", "telefone": "61988887777", "curso": "Pedagogia", "turno": "Vespertino", "data_cadastro": "2026-03-01" },
-    { "id": 17, "projeto_id": 8, "nome_estudante": "Ricardo Alves", "email": "ricardo.a@estudante.undf.edu.br", "telefone": "61988888888", "turn": "Noturno", "curso": "Pedagogia", "turno": "Noturno", "data_cadastro": "2026-03-02" },
-    { "id": 18, "projeto_id": 8, "nome_estudante": "Sabrina Nunes", "email": "sabrina.n@estudante.undf.edu.br", "telefone": "61988889999", "curso": "Pedagogia", "turno": "Matutino", "data_cadastro": "2026-03-02" },
-    { "id": 19, "projeto_id": 10, "nome_estudante": "Tiago Franco", "email": "tiago.f@estudante.undf.edu.br", "telefone": "61977771111", "curso": "Pedagogia", "turno": "Vespertino", "data_cadastro": "2026-03-06" },
-    { "id": 20, "projeto_id": 10, "nome_estudante": "Vanessa Lins", "email": "vanessa.l@estudante.undf.edu.br", "telefone": "61977772222", "curso": "Administração", "turno": "Noturno", "data_cadastro": "2026-03-06" }
   ]
 }
