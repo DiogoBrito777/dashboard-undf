@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniProjetos Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <script src="mock.js"></script>
 </head>
-<body>
+<body data-theme="light">
 
     <!-- CABEÇALHO -->
     <header class="header">
         <div class="logo">
-            <img src="logo_undf.png" alt="Logo UnDF" class="logo-img">
+            <img src="imagens/logo_undf.png" alt="Logo UnDF" class="logo-img">
             <h1>UniProjetos Dashboard</h1>
         </div>
         <button id="themeToggle" class="theme-toggle">🌙 Modo Escuro</button>
@@ -19,35 +20,39 @@
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="dashboard-container">
-        
+
         <!-- CARDS SUPERIORES -->
         <section class="stats-grid">
-            
+
             <!-- VAGAS DISPONÍVEIS -->
-            <div class="card stat-card">
+            <div class="card stat-card" data-card="vagas">
                 <h3>VAGAS DISPONÍVEIS</h3>
-                <div class="stat-value">145</div>
-                <p class="stat-subtitle">em <strong>42</strong> projetos cadastrados</p>
-            </div>
-            
-            <!-- TOTAL INSCRIÇÕES -->
-            <div class="card stat-card">
-                <h3>TOTAL INSCRIÇÕES</h3>
-                <div class="stat-value">565</div>
-                <p class="stat-trend trend-up">↗ +12% esta semana</p>
+                <div class="stat-value" id="vagasDisponiveis">0</div>
+                <p class="stat-subtitle">
+                    em <strong id="qtdProjetos">0</strong> projetos cadastrados
+                </p>
             </div>
 
-            <!-- TAXA DE OCUPAÇÃO (LADO A LADO) -->
-            <div class="card stat-card occupation-card-split">
+            <!-- TOTAL INSCRIÇÕES -->
+            <div class="card stat-card" data-card="inscritos">
+                <h3>TOTAL INSCRIÇÕES</h3>
+                <div class="stat-value" id="totalInscricoes">0</div>
+                <p class="stat-trend" id="trendInscricoes"></p>
+            </div>
+
+            <!-- TAXA DE OCUPAÇÃO -->
+            <div class="card stat-card occupation-card-split" data-card="ocupacao">
                 <div class="occupation-info-left">
                     <h3>TAXA DE OCUPAÇÃO</h3>
-                    <div class="occupation-numbers">
-                        <div class="big-number">565 <span class="small-label">ocupadas</span></div>
-                        <div class="big-number secondary">145 <span class="small-label">livres</span></div>
-                    </div>
+                    <p id="taxaPercent" class="stat-value">0 %</p>
+                    <!--
+                    id="ocupacaoDetalhes" class="ocupacao-detalhes">
+                        0&nbsp;ocupadas&nbsp;•&nbsp;0&nbsp;livres
+                    </p>
+                    -->
                 </div>
                 <div class="circle-chart-placeholder">
-                    <span>80%</span>
+                    <canvas id="occupancyChart" width="120" height="120"></canvas>
                 </div>
             </div>
 
@@ -55,66 +60,64 @@
 
         <!-- BARRA DE PESQUISA E FILTROS -->
         <section class="controls-section">
-            <input type="search" placeholder="Buscar projetos..." class="search-bar">
+            <input type="search" id="searchInput" class="search-bar" placeholder="Buscar projetos…">
+
             <div class="filters">
-                <select class="filter-select">
+                <select id="areaSelect" class="filter-select">
                     <option value="todas">Todas as Áreas</option>
-                    <option value="engenharia">Engenharia</option>
-                    <option value="tecnologia">Tecnologia</option>
-                    <option value="ciencias-vida">Ciências da Vida</option>
                 </select>
-                <select class="filter-select">
+
+                <select id="statusSelect" class="filter-select">
                     <option value="todos">Todos os Status</option>
                     <option value="com-vagas">Com Vagas</option>
                     <option value="esgotado">Esgotado</option>
                 </select>
+
+                <button id="clearFiltersBtn" class="clear-filters-btn">
+                    Limpar filtros
+                </button>
             </div>
         </section>
 
-        <!-- TABELA E GRÁFICO DE PIZZA -->
+        <!-- TABELA E GRÁFICO -->
         <section class="main-content-grid">
-            
+
             <!-- TABELA DE PROJETOS -->
             <div class="card table-card">
                 <h2>Projetos</h2>
                 <div class="table-responsive">
-                    <table class="data-table">
+                    <table id="projectsTable" class="data-table">
                         <thead>
                             <tr>
-                                <th>NOME DO PROJETO <span class="sort-icon">↑</span></th>
-                                <th>ÁREA TEMÁTICA <span class="sort-icon">↕</span></th>
-                                <th>STATUS <span class="sort-icon">↕</span></th>
-                                <th>VAGAS <span class="sort-icon">↕</span></th>
-                                <th>INSCRITOS <span class="sort-icon">↕</span></th>
+                                <th data-field="nome">
+                                    NOME DO PROJETO <span class="sort-icon">↕</span>
+                                </th>
+                                <th data-field="area">
+                                    ÁREA TEMÁTICA <span class="sort-icon">↕</span>
+                                </th>
+                                <th data-field="status">
+                                    STATUS <span class="sort-icon">↕</span>
+                                </th>
+                                <th data-field="vagas">
+                                    VAGAS <span class="sort-icon">↕</span>
+                                </th>
+                                <th data-field="inscritos">
+                                    INSCRITOS <span class="sort-icon">↕</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="clickable-row">
-                                <td>Biossíntese de Compostos...</td>
-                                <td>Ciências da Vida</td>
-                                <td><span class="badge badge-green">Com Vagas</span></td>
-                                <td>6</td>
-                                <td>1</td>
-                            </tr>
-                            <tr class="clickable-row">
-                                <td>Computação Quântica...</td>
-                                <td>Tecnologia</td>
-                                <td><span class="badge badge-yellow">Esgotado</span></td>
-                                <td>2</td>
-                                <td>8</td>
-                            </tr>
+                            <!-- ATUALIZAÇÃO DADOS -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- GRÁFICO POR ÁREA -->
+            <!-- GRÁFICO -->
             <div class="card chart-card">
                 <h2>Vagas por Área Temática</h2>
                 <div class="pie-chart-placeholder">
-                    <p style="color: var(--text-secondary); text-align: center; margin-top: 50px;">
-                        [ Gráfico JS entrará aqui ]
-                    </p>
+                    <canvas id="pieChart"></canvas>
                 </div>
             </div>
 
@@ -122,83 +125,20 @@
     </main>
 
     <!-- MODAL DE DETALHES -->
-    <div class="modal-overlay" id="projectModal">
+    <div id="projectModal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-modal">✕</button>
-            
             <div class="modal-header">
-                <span class="badge badge-green">Com Vagas</span>
-                <span class="modal-area">⚗️ Ciências da Vida</span>
-                <h2 class="modal-title">Biossíntese de Compostos Antimicrobianos</h2>
-                <p class="modal-description">Isolamento e caracterização de metabólitos secundários produzidos por actinobactérias do solo da Mata Atlântica com atividade contra bactérias resistentes.</p>
-            </div>
-
-            <div class="modal-mini-cards">
-                <div class="mini-card">
-                    <div class="mini-value text-blue">6</div>
-                    <div class="mini-label">Vagas</div>
-                </div>
-                <div class="mini-card">
-                    <div class="mini-value text-purple">1</div>
-                    <div class="mini-label">Inscritos</div>
-                </div>
-                <div class="mini-card">
-                    <div class="mini-value text-green">5</div>
-                    <div class="mini-label">Disponíveis</div>
-                </div>
-            </div>
-
-            <div class="modal-progress">
-                <div class="progress-header">
-                    <span>Taxa de ocupação</span>
-                    <span>17%</span>
-                </div>
-                <div class="progress-bar-bg">
-                    <div class="progress-bar-fill" style="width: 17%;"></div>
-                </div>
-            </div>
-
-            <div class="modal-students">
-                <div class="modal-students-header">
-                    <h3>👥 Alunos Inscritos</h3>
-                    <span class="students-count">1 alunos</span>
-                </div>
-                <div class="table-responsive">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>NOME</th>
-                                <th>E-MAIL</th>
-                                <th>TELEFONE</th>
-                                <th>CURSO</th>
-                                <th>TURNO</th>
-                                <th>CADASTRO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Renata Souza</td>
-                                <td>r.souza@uni.edu.br</td>
-                                <td>(61) 97234-5671</td>
-                                <td>Economia</td>
-                                <td><span class="badge badge-yellow">Matutino</span></td>
-                                <td>03/01/2026</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <span id="modalStatus" class="badge"></span>
+                <span id="modalArea" class="modal-area"></span>
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <p id="modalDescription" class="modal-description"></p>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPT DE TEMA PARA TESTE IMEDIATO -->
-    <script>
-        const btnTheme = document.getElementById('themeToggle');
-        btnTheme.addEventListener('click', () => {
-            const isDark = document.body.getAttribute('data-theme') === 'dark';
-            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            btnTheme.textContent = isDark ? '🌙 Modo Escuro' : '☀️ Modo Claro';
-        });
-    </script>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

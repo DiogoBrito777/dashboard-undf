@@ -469,3 +469,21 @@ body {
         gap: 15px;
     }
 }
+
+/* Botão para limpar filtros */
+.clear-filters-btn{
+    background-color: var(--accent-blue);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-left: 8px;
+}
+.clear-filters-btn:hover{
+    background-color: var(--accent-blue-hover, #003b8a);
+}
+
+.badge { white-space: nowrap; }

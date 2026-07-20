@@ -1,4 +1,4 @@
-{
+window.mockData = {
   "dashboard": {
     "vagasDisponiveis": 45,
     "projetosCadastrados": 10,
@@ -273,6 +273,33 @@
           "dataCadastro": "06/03/2026"
         }
       ]
+    },
+        {
+      "id": 11,
+      "nome": "Teste",
+      "areaTematica": "Teste",
+      "status": "Com Vagas",
+      "vagas": 50,
+      "inscritos": 2,
+      "descricao": "Desenvolvimento de metodologias de suporte psicológico e educacional para jovens universitários.",
+      "alunos": [
+        {
+          "nome": "Tiago Franco",
+          "email": "tiago.f@estudante.undf.edu.br",
+          "telefone": "(61) 97777-1111",
+          "curso": "Pedagogia",
+          "turno": "Vespertino",
+          "dataCadastro": "06/03/2026"
+        },
+        {
+          "nome": "Vanessa Lins",
+          "email": "vanessa.l@estudante.undf.edu.br",
+          "telefone": "(61) 97777-2222",
+          "curso": "Administração",
+          "turno": "Noturno",
+          "dataCadastro": "06/03/2026"
+        }
+      ]
     }
   ]
-}
+};
