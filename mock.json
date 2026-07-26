@@ -1,10 +1,10 @@
 {
   "dashboard": {
     "vagasDisponiveis": 57,
-    "projetosCadastrados": 26,
-    "totalInscricoes": 78,
-    "taxaOcupacao": 56.5,
-    "vagasOcupadas": 78,
+    "projetosCadastrados": 25,
+    "totalInscricoes": 75,
+    "taxaOcupacao": 56.8,
+    "vagasOcupadas": 75,
     "vagasLivres": 57
   },
   "projetos": [
@@ -364,21 +364,6 @@
       "alunos": [
         { "nome": "Nádia Ribeiro", "email": "nadia.ribeiro@estudante.undf.edu.br", "telefone": "(61) 72222-1012", "curso": "Pedagogia", "turno": "Matutino", "dataCadastro": "17/03/2025" },
         { "nome": "Otávio Cunha", "email": "otavio.cunha@estudante.undf.edu.br", "telefone": "(61) 72222-1013", "curso": "Pedagogia", "turno": "Noturno", "dataCadastro": "18/03/2025" }
-      ]
-    },
-    {
-      "id": 27,
-      "nome": "Aplicativos Acessíveis para Serviços Públicos",
-      "areaTematica": "Engenharia de Software",
-      "status": "Esgotado",
-      "semestre": "2025.2",
-      "vagas": 3,
-      "inscritos": 3,
-      "descricao": "Desenvolvimento de interfaces inclusivas para serviços públicos.",
-      "alunos": [
-        { "nome": "Pedro Queiroz", "email": "pedro.queiroz@estudante.undf.edu.br", "telefone": "(61) 72222-1014", "curso": "Engenharia de Software", "turno": "Matutino", "dataCadastro": "11/08/2025" },
-        { "nome": "Rafaela Brito", "email": "rafaela.brito@estudante.undf.edu.br", "telefone": "(61) 72222-1015", "curso": "Sistemas de Informação", "turno": "Vespertino", "dataCadastro": "12/08/2025" },
-        { "nome": "Samuel Teixeira", "email": "samuel.teixeira@estudante.undf.edu.br", "telefone": "(61) 72222-1016", "curso": "Ciência da Computação", "turno": "Noturno", "dataCadastro": "13/08/2025" }
       ]
     },
     {
