@@ -2,6 +2,7 @@
 
 O UniProjetos Dashboard é uma aplicação web (Single Page Application) desenvolvida para gerenciar vagas, inscrições e ocupação de projetos universitários. O painel fornece uma visão analítica rápida (KPIs e Gráficos) e permite detalhamento granular (Drill-down) em uma interface limpa e responsiva.
 
+
 ## 🚀 Tecnologias Utilizadas
 * **HTML5:** Estruturação semântica e acessível.
 * **CSS3:** Design System baseado em variáveis (`:root`), responsividade via Flexbox/Grid e animações nativas. Compatível com Modo Claro e Escuro.
