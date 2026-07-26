@@ -21,7 +21,7 @@
         { "nome": "Ana Silva", "email": "ana.s@estudante.undf.edu.br", "telefone": "(61) 99999-1111", "curso": "Ciência da Computação", "turno": "Matutino", "dataCadastro": "01/03/2026" },
         { "nome": "Bruno Costa", "email": "bruno.costa@estudante.undf.edu.br", "telefone": "(61) 99999-2222", "curso": "Ciência da Computação", "turno": "Noturno", "dataCadastro": "02/03/2026" },
         { "nome": "Carlos Oliveira", "email": "carlos.o@estudante.undf.edu.br", "telefone": "(61) 99999-3333", "curso": "Engenharia de Software", "turno": "Matutino", "dataCadastro": "03/03/2026" },
-        { "nome": "Mariana Santos", "email": "mariana.s@estudante.undf.edu.br", "telefone": "(61) 98888-0000", "curso": "Sistemas de Informação", "turno": "Noturno", "dataCadastro": "05/03/2026" }
+        { "nome": "Mariana Santos", "email": "mariana.s@estudante.undf.edu.br", "telefone": "(61) 98888-0550", "curso": "Sistemas de Informação", "turno": "Noturno", "dataCadastro": "05/03/2026" }
       ]
     },
     {
