@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.querySelector('.search-bar');
     const areaSelect = document.querySelectorAll('.filter-select')[0];
     const statusSelect = document.querySelectorAll('.filter-select')[1];
+    const semestreSelect = document.getElementById('semestreSelect');
     const clearFiltersBtn = document.getElementById('clearFiltersBtn');
     
     const tableContainer = document.getElementById('tableContainer');
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchBar.value = '';
         areaSelect.value = 'todas';
         statusSelect.value = 'todos';
+        semestreSelect.value = '2026.2';
         sortConfig = { coluna: null, asc: true };
         aplicarFiltrosComLoading();
     });
@@ -119,12 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderEmptyState() {
         const hasArea = areaSelect.value !== 'todas';
         const hasStatus = statusSelect.value !== 'todos';
+        const hasSemestre = semestreSelect.value !== '2026.2';
         
         let tagsHtml = '';
-        if(hasArea || hasStatus) {
+        if(hasArea || hasStatus || hasSemestre) {
             tagsHtml = `<div class="filters-pills">Filtros ativos: 
                 ${hasArea ? `<span class="pill pill-area"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Área aplicada</span>` : ''}
                 ${hasStatus ? `<span class="pill pill-status"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Status aplicado</span>` : ''}
+                ${hasSemestre ? `<span class="pill">Semestre ${semestreSelect.value}</span>` : ''}
             </div>`;
         }
 
@@ -277,10 +281,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const termoNormalizado = searchBar.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").trim();
         const areaSlug = areaSelect.value;
         const statusSlug = statusSelect.value;
+        const semestre = semestreSelect.value;
 
         searchBar.classList.toggle('filter-active', searchBar.value.trim() !== '');
         areaSelect.classList.toggle('filter-active', areaSelect.value !== 'todas');
         statusSelect.classList.toggle('filter-active', statusSelect.value !== 'todos');
+        semestreSelect.classList.toggle('filter-active', semestreSelect.value !== '2026.2');
 
         projetosFiltrados = projetosOriginais.filter(p => {
             const nomeNormalizado = p.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
@@ -289,8 +295,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchPesquisa = nomeNormalizado.includes(termoNormalizado) || areaNormalizada.includes(termoNormalizado);
             const matchArea = areaSlug === 'todas' || slugify(p.areaTematica) === areaSlug;
             const matchStatus = statusSlug === 'todos' || slugify(p.status) === statusSlug;
+            const matchSemestre = p.semestre === semestre;
             
-            return matchPesquisa && matchArea && matchStatus;
+            return matchPesquisa && matchArea && matchStatus && matchSemestre;
         });
 
         if (sortConfig.coluna) {
@@ -330,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchBar.addEventListener('input', aplicarFiltrosComLoading);
     areaSelect.addEventListener('change', aplicarFiltrosComLoading);
     statusSelect.addEventListener('change', aplicarFiltrosComLoading);
+    semestreSelect.addEventListener('change', aplicarFiltrosComLoading);
 
     const getInitials = (name) => {
         const parts = name.split(' ');
