@@ -3,7 +3,7 @@
 /* ========================================= */
 const API_DELAY_MS = 1200;       
 const FILTER_DELAY_MS = 400;     
-const DRAWER_LOADING_MS = 300;   
+const DRAWER_LOADING_MS = 400;   
 
 document.addEventListener('DOMContentLoaded', () => {
     /* ========================================= */
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentOpenProjectId = null;
     let studentSortConfig = { coluna: null, asc: true };
+    let lastFocusedElement = null;
 
     /* ========================================= */
     /* REFERÊNCIAS DO DOM                        */
@@ -74,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchBar.value = '';
         areaSelect.value = 'todas';
         statusSelect.value = 'todos';
-        semestreSelect.value = '2026.2';
+        semestreSelect.value = 'todos';
         sortConfig = { coluna: null, asc: true };
         aplicarFiltrosComLoading();
     });
@@ -121,29 +122,29 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderEmptyState() {
         const hasArea = areaSelect.value !== 'todas';
         const hasStatus = statusSelect.value !== 'todos';
-        const hasSemestre = semestreSelect.value !== '2026.2';
+        const hasSemestre = semestreSelect.value !== 'todos';
         
         let tagsHtml = '';
         if(hasArea || hasStatus || hasSemestre) {
             tagsHtml = `<div class="filters-pills">Filtros ativos: 
-                ${hasArea ? `<span class="pill pill-area"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Área aplicada</span>` : ''}
-                ${hasStatus ? `<span class="pill pill-status"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Status aplicado</span>` : ''}
-                ${hasSemestre ? `<span class="pill">Semestre ${semestreSelect.value}</span>` : ''}
+                ${hasArea ? `<span class="pill pill-area"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Área aplicada</span>` : ''}
+                ${hasStatus ? `<span class="pill pill-status"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Status aplicado</span>` : ''}
+                ${hasSemestre ? `<span class="pill pill-semestre"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Semestre ${semestreSelect.options[semestreSelect.selectedIndex].text}</span>` : ''}
             </div>`;
         }
 
         tableContainer.innerHTML = `
             <div class="empty-state-container">
                 <div class="empty-icon">
-                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="60" height="60">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="60" height="60" aria-hidden="true" focusable="false">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
                 ${tagsHtml}
                 <h3 class="state-title">Nenhum projeto encontrado</h3>
                 <p class="state-desc">Não localizamos projetos correspondentes aos filtros de pesquisa atuais. Tente ampliar ou limpar os critérios de busca.</p>
-                <button onclick="document.getElementById('clearFiltersBtn').click()" class="clear-filters-btn" style="display:flex;align-items:center;gap:8px;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <button onclick="document.getElementById('clearFiltersBtn').click()" class="clear-filters-btn" style="display:flex;align-items:center;gap:8px;" aria-label="Limpar todos os filtros">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     Limpar filtros
                 </button>
             </div>
@@ -194,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (statusL.includes('encerrado')) badgeClass = 'badge-red';
 
             return `
-                <tr class="clickable-row" data-id="${p.id}" title="Clique para detalhes das inscrições">
+                <tr class="clickable-row" data-id="${p.id}" title="Clique para detalhes das inscrições" tabindex="0" role="button">
                     <td>${p.nome}</td>
                     <td>${p.areaTematica}</td>
                     <td><span class="badge ${badgeClass}">${p.status}</span></td>
@@ -209,6 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.clickable-row').forEach(row => {
             row.addEventListener('click', () => {
                 abrirModal(parseInt(row.getAttribute('data-id'), 10));
+            });
+            row.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    abrirModal(parseInt(row.getAttribute('data-id'), 10));
+                }
             });
         });
     }
@@ -286,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchBar.classList.toggle('filter-active', searchBar.value.trim() !== '');
         areaSelect.classList.toggle('filter-active', areaSelect.value !== 'todas');
         statusSelect.classList.toggle('filter-active', statusSelect.value !== 'todos');
-        semestreSelect.classList.toggle('filter-active', semestreSelect.value !== '2026.2');
+        semestreSelect.classList.toggle('filter-active', semestreSelect.value !== 'todos');
 
         projetosFiltrados = projetosOriginais.filter(p => {
             const nomeNormalizado = p.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
@@ -295,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchPesquisa = nomeNormalizado.includes(termoNormalizado) || areaNormalizada.includes(termoNormalizado);
             const matchArea = areaSlug === 'todas' || slugify(p.areaTematica) === areaSlug;
             const matchStatus = statusSlug === 'todos' || slugify(p.status) === statusSlug;
-            const matchSemestre = p.semestre === semestre;
+            const matchSemestre = semestre === 'todos' || p.semestre === semestre;
             
             return matchPesquisa && matchArea && matchStatus && matchSemestre;
         });
@@ -338,6 +345,19 @@ document.addEventListener('DOMContentLoaded', () => {
     areaSelect.addEventListener('change', aplicarFiltrosComLoading);
     statusSelect.addEventListener('change', aplicarFiltrosComLoading);
     semestreSelect.addEventListener('change', aplicarFiltrosComLoading);
+
+    searchBar.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') aplicarFiltrosComLoading();
+    });
+    areaSelect.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') aplicarFiltrosComLoading();
+    });
+    statusSelect.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') aplicarFiltrosComLoading();
+    });
+    semestreSelect.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') aplicarFiltrosComLoading();
+    });
 
     const getInitials = (name) => {
         const parts = name.split(' ');
@@ -433,10 +453,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const projeto = projetosOriginais.find(p => p.id === id);
         if (!projeto) return;
 
+        lastFocusedElement = document.activeElement;
+
         currentOpenProjectId = id;
         studentSortConfig = { coluna: null, asc: true }; 
 
         projectModal.style.display = 'flex';
+        projectModal.setAttribute('aria-hidden', 'false');
+        
         const dynamicContent = document.querySelector('.drawer-dynamic-content');
         
         dynamicContent.innerHTML = `
@@ -472,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="drawer-body">
                     <div class="students-section-header">
                         <h3>
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align: middle;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align: middle;" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                             Alunos Inscritos
                         </h3>
                         <span class="students-count-badge">${alunos.length} aluno${alunos.length !== 1 ? 's' : ''}</span>
@@ -483,13 +507,30 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             
             renderStudentsTable();
+
+            if (closeModalBtn) closeModalBtn.focus();
         }, DRAWER_LOADING_MS);
     }
 
-    closeModalBtn.addEventListener('click', () => projectModal.style.display = 'none');
+    function fecharModal() {
+        projectModal.style.display = 'none';
+        projectModal.setAttribute('aria-hidden', 'true');
+        
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+        }
+    }
+
+    closeModalBtn.addEventListener('click', fecharModal);
     
     projectModal.addEventListener('click', (e) => {
-        if (e.target === projectModal) projectModal.style.display = 'none';
+        if (e.target === projectModal) fecharModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && projectModal.style.display === 'flex') {
+            fecharModal();
+        }
     });
 
     /* ========================================= */
@@ -530,15 +571,15 @@ document.addEventListener('DOMContentLoaded', () => {
             tableContainer.innerHTML = `
                 <div class="error-state-container">
                     <div class="error-icon">
-                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="55" height="55">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="55" height="55" aria-hidden="true" focusable="false">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
                     </div>
                     <h3 class="state-title">Falha na conexão</h3>
                     <p class="state-desc">Não foi possível carregar os dados do arquivo mock. Verifique a disponibilidade da rede ou a integridade do JSON.</p>
                     <div class="error-code">ERR_FILE_NOT_FOUND • FETCH_FAILED</div>
-                    <button class="retry-btn" onclick="location.reload()">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                    <button class="retry-btn" onclick="location.reload()" aria-label="Tentar carregar dados novamente">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
                         Tentar Novamente
                     </button>
                 </div>
