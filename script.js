@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModalBtn = document.querySelector('.close-modal');
 
     /* ========================================= */
-    /* GERENCIAMENTO DE TEMA (CLARO/ESCURO)      */
+    /* GERENCIAMENTO DE TEMA (CLARO/ESCURO)       */
     /* ========================================= */
     const initTheme = localStorage.getItem('theme') || 'light';
     setTheme(initTheme);
