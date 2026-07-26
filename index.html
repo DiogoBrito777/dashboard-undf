@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniProjetos Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <script src="mock.js"></script>
 </head>
 <body data-theme="light">
 
     <!-- CABEÇALHO -->
     <header class="header">
         <div class="logo">
-            <img src="imagens/logo_undf.png" alt="Logo UnDF" class="logo-img">
+            <img src="imagens/logo_undf.png" alt="Logo UnDF" class="logo-img" onerror="this.style.display='none'">
             <h1>UniProjetos Dashboard</h1>
         </div>
         <button id="themeToggle" class="theme-toggle">🌙 Modo Escuro</button>
@@ -23,117 +22,116 @@
 
         <!-- CARDS SUPERIORES -->
         <section class="stats-grid">
-
-            <!-- VAGAS DISPONÍVEIS -->
-            <div class="card stat-card" data-card="vagas">
+            <div class="card stat-card relative-card" data-card="vagas">
+                <div class="card-icon blue-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                </div>
                 <h3>VAGAS DISPONÍVEIS</h3>
                 <div class="stat-value" id="vagasDisponiveis">0</div>
                 <p class="stat-subtitle">
-                    em <strong id="qtdProjetos">0</strong> projetos cadastrados
+                    de <strong id="qtdVagasTotais">0</strong> vagas totais
                 </p>
             </div>
 
-            <!-- TOTAL INSCRIÇÕES -->
-            <div class="card stat-card" data-card="inscritos">
+            <div class="card stat-card relative-card" data-card="inscritos">
+                <div class="card-icon green-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
                 <h3>TOTAL INSCRIÇÕES</h3>
                 <div class="stat-value" id="totalInscricoes">0</div>
-                <p class="stat-trend" id="trendInscricoes"></p>
+                <p class="stat-subtitle">
+                    alunos inscritos ativos
+                </p>
             </div>
 
-            <!-- TAXA DE OCUPAÇÃO -->
             <div class="card stat-card occupation-card-split" data-card="ocupacao">
                 <div class="occupation-info-left">
-                    <h3>TAXA DE OCUPAÇÃO</h3>
-                    <p id="taxaPercent" class="stat-value">0 %</p>
-                    <!--
-                    id="ocupacaoDetalhes" class="ocupacao-detalhes">
-                        0&nbsp;ocupadas&nbsp;•&nbsp;0&nbsp;livres
+                    <h3 style="text-transform: none;">Ocupadas vs. Disponíveis</h3>
+                    <p id="taxaPercent" class="stat-value">0%</p>
+                    <p class="stat-subtitle" id="ocupacaoDetalhes">
+                        0 ocup. · 0 livres
                     </p>
-                    -->
                 </div>
                 <div class="circle-chart-placeholder">
                     <canvas id="occupancyChart" width="120" height="120"></canvas>
                 </div>
             </div>
-
         </section>
 
         <!-- BARRA DE PESQUISA E FILTROS -->
         <section class="controls-section">
-            <input type="search" id="searchInput" class="search-bar" placeholder="Buscar projetos…">
+            <div class="filter-group search-group">
+                <label for="searchInput" class="filter-label">Pesquisa</label>
+                <input type="search" id="searchInput" class="search-bar" placeholder="Buscar projetos e áreas temáticas…">
+            </div>
 
             <div class="filters">
-                <select id="areaSelect" class="filter-select">
-                    <option value="todas">Todas as Áreas</option>
-                </select>
+                <div class="filter-group">
+                    <label for="areaSelect" class="filter-label">Área Temática</label>
+                    <select id="areaSelect" class="filter-select">
+                        <option value="todas">Todas as Áreas</option>
+                    </select>
+                </div>
 
-                <select id="statusSelect" class="filter-select">
-                    <option value="todos">Todos os Status</option>
-                    <option value="com-vagas">Com Vagas</option>
-                    <option value="esgotado">Esgotado</option>
-                </select>
+                <div class="filter-group">
+                    <label for="statusSelect" class="filter-label">Status do Projeto</label>
+                    <select id="statusSelect" class="filter-select">
+                        <option value="todos">Todos</option>
+                        <option value="com-vagas">Com Vagas</option>
+                        <option value="esgotado">Esgotado</option>
+                        <option value="projeto-encerrado">Projeto Encerrado</option>
+                    </select>
+                </div>
 
-                <button id="clearFiltersBtn" class="clear-filters-btn">
-                    Limpar filtros
-                </button>
+                <div class="filter-group">
+                    <button id="clearFiltersBtn" class="clear-filters-btn">
+                        Limpar filtros
+                    </button>
+                </div>
             </div>
         </section>
 
         <!-- TABELA E GRÁFICO -->
         <section class="main-content-grid">
-
-            <!-- TABELA DE PROJETOS -->
             <div class="card table-card">
                 <h2>Projetos</h2>
-                <div class="table-responsive">
+                <p class="hint-text">💡 Selecione um projeto na tabela para visualizar as inscrições e detalhes.</p>
+                <div class="table-responsive" id="tableContainer">
                     <table id="projectsTable" class="data-table">
                         <thead>
                             <tr>
-                                <th data-field="nome">
-                                    NOME DO PROJETO <span class="sort-icon">↕</span>
-                                </th>
-                                <th data-field="area">
-                                    ÁREA TEMÁTICA <span class="sort-icon">↕</span>
-                                </th>
-                                <th data-field="status">
-                                    STATUS <span class="sort-icon">↕</span>
-                                </th>
-                                <th data-field="vagas">
-                                    VAGAS <span class="sort-icon">↕</span>
-                                </th>
-                                <th data-field="inscritos">
-                                    INSCRITOS <span class="sort-icon">↕</span>
-                                </th>
+                                <th data-field="nome"><div class="th-content">NOME DO PROJETO <span class="sort-icon">↕</span></div></th>
+                                <th data-field="area"><div class="th-content">ÁREA TEMÁTICA <span class="sort-icon">↕</span></div></th>
+                                <th data-field="status"><div class="th-content">STATUS <span class="sort-icon">↕</span></div></th>
+                                <th data-field="vagas"><div class="th-content">VAGAS <span class="sort-icon">↕</span></div></th>
+                                <th data-field="inscritos"><div class="th-content">INSCRITOS <span class="sort-icon">↕</span></div></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- ATUALIZAÇÃO DADOS -->
+                            <!-- Dados injetados via JS -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- GRÁFICO -->
             <div class="card chart-card">
-                <h2>Vagas por Área Temática</h2>
+                <h2 class="chart-title">Vagas por Área Temática</h2>
                 <div class="pie-chart-placeholder">
                     <canvas id="pieChart"></canvas>
                 </div>
             </div>
-
         </section>
     </main>
 
-    <!-- MODAL DE DETALHES -->
+    <!-- BARRA LATERAL (DRAWER) DE DETALHES -->
     <div id="projectModal" class="modal-overlay">
-        <div class="modal-content">
+        <div class="modal-content drawer-layout">
             <button class="close-modal">✕</button>
-            <div class="modal-header">
-                <span id="modalStatus" class="badge"></span>
-                <span id="modalArea" class="modal-area"></span>
-                <h2 id="modalTitle" class="modal-title"></h2>
-                <p id="modalDescription" class="modal-description"></p>
+            
+            <div class="drawer-dynamic-content">
+                <!-- Conteúdo injetado via JS -->
             </div>
+            
         </div>
     </div>
 
