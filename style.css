@@ -112,7 +112,7 @@ body {
 .theme-toggle:hover { border-color: var(--accent-blue); box-shadow: 0 0 0 2px rgba(0, 80, 158, 0.1); }
 
 /* ========================================= */
-/* 4. ESTRUTURA E CARDS                      */
+/* 4. ESTRUTURA E CARDS                       */
 /* ========================================= */
 .dashboard-container {
     max-width: 1200px;
