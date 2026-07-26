@@ -174,17 +174,28 @@ body {
 /* ========================================= */
 /* 5. CONTROLES (PESQUISA E FILTROS)         */
 /* ========================================= */
-.controls-section { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-end; }
+.controls-section { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-end; flex-wrap: wrap; }
 
 .filter-group { display: flex; flex-direction: column; gap: 6px; justify-content: flex-end; }
 .filter-label { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); text-align: center; display: block; }
 
-.search-group { flex-grow: 1; }
+.search-group { flex-grow: 1; min-width: 250px; }
 
 .search-bar, .filter-select {
     background-color: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary);
-    padding: 14px 20px; border-radius: 30px; outline: none; font-size: 0.95rem;
+    border-radius: 30px; outline: none; font-size: 0.95rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); transition: all 0.3s ease; 
+}
+
+.search-bar {
+    padding: 14px 20px;
+    width: 100%;
+}
+
+.filter-select {
+    cursor: pointer; 
+    padding: 14px 20px;
+    padding-right: 32px;
 }
 
 [data-theme="dark"] .search-bar,
@@ -195,8 +206,7 @@ body {
 
 .filter-active { border-color: var(--accent-blue) !important; background-color: rgba(0, 80, 158, 0.05); font-weight: 600; }
 
-.filters { display: flex; gap: 15px; align-items: flex-end; }
-.filter-select { cursor: pointer; padding-right: 30px; }
+.filters { display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap; }
 
 .clear-filters-btn {
     background-color: var(--accent-blue); color: #fff; border: none;
@@ -341,10 +351,11 @@ body {
 .state-title { font-size: 1.5rem; color: var(--text-title); margin-bottom: 15px; font-weight: 800; }
 .state-desc { color: var(--text-secondary); max-width: 500px; line-height: 1.6; margin-bottom: 25px; }
 
-.filters-pills { display: flex; gap: 10px; margin-bottom: 25px; align-items: center; font-size: 0.85rem; color: var(--text-secondary); font-weight: 600; }
+.filters-pills { display: flex; gap: 10px; margin-bottom: 25px; align-items: center; font-size: 0.85rem; color: var(--text-secondary); font-weight: 600; flex-wrap: wrap; justify-content: center; }
 .pill { padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border-color); background: var(--empty-bg); display: flex; align-items: center; gap: 6px; }
 .pill-area { color: var(--accent-blue); border-color: rgba(0, 80, 158, 0.3); }
 .pill-status { color: var(--accent-yellow); border-color: rgba(210, 153, 34, 0.3); }
+.pill-semestre { color: var(--accent-purple); border-color: rgba(111, 66, 193, 0.3); }
 
 .error-code { background: transparent; color: var(--accent-red); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; border: 1px solid var(--accent-red); margin-bottom: 25px; opacity: 0.8; }
 .retry-btn { background-color: var(--accent-red); color: #fff; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: opacity 0.2s; }
@@ -367,7 +378,7 @@ body {
     .main-content-grid { overflow: visible; }
     .controls-section { flex-direction: column; align-items: stretch; }
     .filters { width: 100%; flex-direction: column; align-items: stretch; }
-    .search-bar, .filter-select { width: 100%; }
+    .search-bar, .filter-select { width: 100%; max-width: none; }
     .clear-filters-btn { margin-left: 0; }
     .occupation-card-split { flex-direction: column !important; align-items: flex-start; gap: 20px; }
     .circle-chart-placeholder { align-self: center; }
