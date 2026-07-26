@@ -14,7 +14,7 @@
             <img src="imagens/logo_undf.png" alt="Logo UnDF" class="logo-img" onerror="this.style.display='none'">
             <h1>UniProjetos Dashboard</h1>
         </div>
-        <button id="themeToggle" class="theme-toggle">🌙 Modo Escuro</button>
+        <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema claro e escuro">🌙 Modo Escuro</button>
     </header>
 
     <!-- CONTEÚDO PRINCIPAL -->
@@ -24,10 +24,10 @@
         <section class="stats-grid">
             <div class="card stat-card relative-card" data-card="vagas">
                 <div class="card-icon blue-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                 </div>
                 <h3>VAGAS DISPONÍVEIS</h3>
-                <div class="stat-value" id="vagasDisponiveis">0</div>
+                <div class="stat-value" id="vagasDisponiveis" aria-live="polite">0</div>
                 <p class="stat-subtitle">
                     de <strong id="qtdVagasTotais">0</strong> vagas totais
                 </p>
@@ -35,10 +35,10 @@
 
             <div class="card stat-card relative-card" data-card="inscritos">
                 <div class="card-icon green-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
                 <h3>TOTAL INSCRIÇÕES</h3>
-                <div class="stat-value" id="totalInscricoes">0</div>
+                <div class="stat-value" id="totalInscricoes" aria-live="polite">0</div>
                 <p class="stat-subtitle">
                     alunos inscritos ativos
                 </p>
@@ -47,7 +47,7 @@
             <div class="card stat-card occupation-card-split" data-card="ocupacao">
                 <div class="occupation-info-left">
                     <h3 style="text-transform: none;">Ocupadas vs. Disponíveis</h3>
-                    <p id="taxaPercent" class="stat-value">0%</p>
+                    <p id="taxaPercent" class="stat-value" aria-live="polite">0%</p>
                     <p class="stat-subtitle" id="ocupacaoDetalhes">
                         0 ocup. · 0 livres
                     </p>
@@ -86,7 +86,8 @@
                 <div class="filter-group">
                     <label for="semestreSelect" class="filter-label">Semestre</label>
                     <select id="semestreSelect" class="filter-select">
-                        <option value="2026.2" selected>2026.2</option>
+                        <option value="todos" selected>Todos</option> 
+                        <option value="2026.2">2026.2</option>
                         <option value="2026.1">2026.1</option>
                         <option value="2025.2">2025.2</option>
                         <option value="2025.1">2025.1</option>
@@ -96,7 +97,7 @@
                 </div>
 
                 <div class="filter-group">
-                    <button id="clearFiltersBtn" class="clear-filters-btn">
+                    <button id="clearFiltersBtn" class="clear-filters-btn" aria-label="Limpar todos os filtros">
                         Limpar filtros
                     </button>
                 </div>
@@ -108,7 +109,7 @@
             <div class="card table-card">
                 <h2>Projetos</h2>
                 <p class="hint-text">💡 Selecione um projeto na tabela para visualizar as inscrições e detalhes.</p>
-                <div class="table-responsive" id="tableContainer">
+                <div class="table-responsive" id="tableContainer" aria-live="polite">
                     <table id="projectsTable" class="data-table">
                         <thead>
                             <tr>
@@ -136,9 +137,9 @@
     </main>
 
     <!-- BARRA LATERAL (DRAWER) DE DETALHES -->
-    <div id="projectModal" class="modal-overlay">
+    <div id="projectModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal-content drawer-layout">
-            <button class="close-modal">✕</button>
+            <button class="close-modal" aria-label="Fechar detalhes do projeto">✕</button>
             
             <div class="drawer-dynamic-content">
                 <!-- Conteúdo injetado via JS -->
