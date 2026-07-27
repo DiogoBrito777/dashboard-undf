@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModalBtn = document.querySelector('.close-modal');
 
     /* ========================================= */
-    /* GERENCIAMENTO DE TEMA (CLARO/ESCURO)       */
+    /* GERENCIAMENTO DE TEMA (CLARO/ESCURO)      */
     /* ========================================= */
     const initTheme = localStorage.getItem('theme') || 'light';
     setTheme(initTheme);
@@ -341,7 +341,20 @@ document.addEventListener('DOMContentLoaded', () => {
         filterTimeout = setTimeout(processarFiltros, FILTER_DELAY_MS); 
     }
 
+    /*mobile */
     searchBar.addEventListener('input', aplicarFiltrosComLoading);
+    
+    function rolarParaPesquisa() {
+        if (window.innerWidth <= 900) {
+            setTimeout(() => {
+                searchBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        }
+    }
+    
+    searchBar.addEventListener('focus', rolarParaPesquisa);
+    searchBar.addEventListener('click', rolarParaPesquisa);
+    
     areaSelect.addEventListener('change', aplicarFiltrosComLoading);
     statusSelect.addEventListener('change', aplicarFiltrosComLoading);
     semestreSelect.addEventListener('change', aplicarFiltrosComLoading);
